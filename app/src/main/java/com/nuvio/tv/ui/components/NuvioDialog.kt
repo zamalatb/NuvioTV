@@ -61,7 +61,7 @@ fun NuvioDialog(
                     if (suppressNextKeyUp && native.action == AndroidKeyEvent.ACTION_UP) {
                         if (isSelectKey(native.keyCode) || native.keyCode == AndroidKeyEvent.KEYCODE_MENU) {
                             suppressNextKeyUp = false
-                            return@onPreviewKeyEvent native.downTime <= openedAtMillis
+                            return@onPreviewKeyEvent (SystemClock.uptimeMillis() - openedAtMillis) < 500L
                         }
                     }
                     false
